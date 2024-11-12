@@ -1,65 +1,35 @@
 fn main() {
-    println!("{}", palindrome("Hello, world!"));
-    println!("{}", palindrome("abcdedcba"));
+  println!("{}", is_palindrome("Hello, world!"));
+  println!("{}", is_palindrome("abcdedcba"));
 }
 
-fn palindrome(s: &str) -> String {
-
+pub fn is_palindrome(s: &str) -> bool {
+  let reversed = reverse(s);
+  s == reversed
 }
 
-fn str_reverse(s: &str) -> String {
-   
+pub fn reverse(s: &str) -> String {
+  s.chars().rev().collect()
 }
 
-/*
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
+#[cfg(test)]
+mod tests {
+  use super::*;
 
-#include "palindrome.h"
-
-char *str_reverse(char const *str) {
-  int len, i;
-  char *result;
-
-  len = strlen(str);
-  result = (char*) calloc(len+1, sizeof(char));
-  for (i=0; i<len; ++i) {
-    result[i] = str[len-i-1];
-  }
-  result[len] = '\0';
-
-  return result;
-}
-
-char *palindrome(char const *str) {
-  char *rev;
-  int i;
-  bool result = true;
-  char *answer;
-
-  rev = str_reverse(str);
-  i = 0;
-  while (result && str[i]) {
-    if (str[i] != rev[i]) {
-      result = false;
-    }
-    ++i;
+  #[test]
+  fn test_reverse() {
+      assert_eq!(reverse("hello"), "olleh");
+      assert_eq!(reverse("rust"), "tsur");
+      assert_eq!(reverse(""), "");
   }
 
-  if (result) {
-    answer = (char*) calloc(4, sizeof(char));
-    answer[0] = 'Y';
-    answer[1] = 'e';
-    answer[2] = 's';
-    answer[3] = '\0';
-  } else {
-    answer = (char*) calloc(3, sizeof(char));
-    answer[0] = 'N';
-    answer[1] = 'o';
-    answer[2] = '\0';
+  #[test]
+  fn test_is_palindrome() {
+      assert!(is_palindrome("madam"));
+      assert!(is_palindrome("racecar"));
+      assert!(is_palindrome("a"));
+      assert!(is_palindrome(""));
+      assert!(!is_palindrome("hello"));
+      assert!(!is_palindrome("rust"));
   }
-
-  return answer;
 }
-*/

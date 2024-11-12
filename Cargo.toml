@@ -14,3 +14,7 @@ predicates = "1"
 [[bin]]
 name = "disemvowel"
 path = "disemvowel/main.rs"
+
+[[bin]]
+name = "palindrome"
+path = "palindrome/main.rs"
