@@ -35,7 +35,7 @@ fn main() {
 
     // Use command-line arguments for the name of the file,
     // and s_disemvowel for the text to write out.
-    write_file(Path::new("dummy.txt"), "output string");
+    write_file(Path::new(output_filename), &s_disemvowel);
 }
 
 fn read_file(path: &Path) -> String {
