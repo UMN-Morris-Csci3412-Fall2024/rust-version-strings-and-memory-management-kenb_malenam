@@ -66,7 +66,7 @@ mod tests {
     #[test]
     fn requires_two_arguments() {
         // The `Command` library lets you create and run a CLI command.
-        let mut cmd = Command::cargo_bin("disemvowel-in-rust").unwrap();
+        let mut cmd = Command::cargo_bin("disemvowel").unwrap();
         // Add one command-line argument to this command, namely "1". The assertion
         // below should fail because we didn't provide two arguments as required.
         cmd.arg("1");
@@ -77,7 +77,7 @@ mod tests {
 
     #[test]
     fn requires_read_file() {
-        let mut cmd = Command::cargo_bin("disemvowel-in-rust").unwrap();
+        let mut cmd = Command::cargo_bin("disemvowel").unwrap();
         // Provide two arguments, but both as paths to files that don't actually exist.
         // The assertion below will fail because we couldn't open the first file.
         cmd.arg("/this/path/does/not/exist")
